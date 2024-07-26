@@ -37,9 +37,10 @@ class Myresnet18(nn.Module):
         x = self.model(x)
         return x
 
-device = 'mps'
+device = 'cpu'
 model = Myresnet18()
-model.load_state_dict(torch.load('resnet_weight.pt'))
+model.to(device)
+model.load_state_dict(torch.load('resnet_weight_cpu.pt', map_location='cpu'))
 model.to(device)
 
 preprocess = T.Compose([
