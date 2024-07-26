@@ -42,6 +42,7 @@ model = Myresnet18()
 model.to(device)
 model.load_state_dict(torch.load('resnet_weight_cpu.pt', map_location='cpu'))
 model.to(device)
+model.eval()
 
 preprocess = T.Compose([
     T.Resize((224, 224)),
